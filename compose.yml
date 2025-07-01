@@ -1,6 +1,6 @@
 
 services:
-  fanucros:
+  abbros:
     build:
         context: .
         dockerfile: Dockerfile

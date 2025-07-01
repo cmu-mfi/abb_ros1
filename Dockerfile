@@ -127,10 +127,9 @@ RUN cd /root/ros1_ws && \
 
 # Build
 WORKDIR /root/ros1_ws
-RUN bash -c "source /opt/ros/noetic/setup.bash"
+RUN /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin build"
 
 # Source workspace
-RUN catkin build
 RUN echo "source /root/ros1_ws/devel/setup.bash" >> ~/.bashrc
 
 WORKDIR /root/
