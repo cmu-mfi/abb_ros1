@@ -1,23 +1,28 @@
 <launch>
-    <arg name = "namespace" default = "">
-    <arg name = "sim" default="true">
-    <arg name = "robot" default="abb_irb1300">
 
-    <group ns = "$(arg namespace)" />
+    <!-- Launch file arguments -->
+    <arg name="namespace" default="" />
+    <arg name="sim" default="true" />
+
+    <group ns="$(arg namespace)">
         <param name="tf_prefix" value="$(arg namespace)" />
-        <arg name = "ab_ip" value= "192.168.99.99">
 
-        <node name="ab_interface" pkg="fc_tasks" type="fc_tasks" output="screen" >
+        <!-- Robot IP -->
+        <arg name ="ab_ip" value="192.168.2.151" />
+
+        <!-- Launch ab_interface Node -->
+        <node name="ab_interface" pkg="ab_tasks" type="ab_tasks" output="screen" >
             <param name="group_name" type="str" value="manipulator"/>
         </node>
-
-        <include file="$(find $(arg robot)_moveit_config)/launch/moveit_planning_execution.launch" >
+        <!-- launch-prefix="gdb -ex run -/-args" -->
+        
+        <!-- Launch MoveIt -->
+        <include file="$(find abb_irb1300_moveit_config)/launch/moveit_planning_execution.launch" >
             <arg name="robot_ip" value="$(arg ab_ip)" unless="$(arg sim)"/>
 			<arg name="sim" value="false" unless="$(arg sim)"/>
             <arg name="namespace" value="$(arg namespace)"/>
         </include>
     </group>
 
-    </group>
+</launch> 
 
-</launch>
