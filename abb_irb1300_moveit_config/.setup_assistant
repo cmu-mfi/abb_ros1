@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: abb_irb1300_support
+    relative_path: urdf/irb1300.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/abb_irb1300.srdf
+  CONFIG:
+    author_name: Ankit Aggarwal
+    author_email: ankitagg@andrew.cmu.edu
+    generated_timestamp: 1751392142

@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find abb_resources)/urdf/common_materials.xacro"/>
+    
+    <xacro:macro name="abb_irb1300" params="prefix">
+    <!-- link list -->
+    <link name="${prefix}base_link">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/base_link.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/base_link.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <link name="${prefix}link_1">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/link_1.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/link_1.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <link name="${prefix}link_2">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/link_2.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/link_2.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <link name="${prefix}link_3">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/link_3.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/link_3.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <link name="${prefix}link_4">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/link_4.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/link_4.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <link name="${prefix}link_5">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/link_5.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/link_5.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <link name="${prefix}link_6">
+      <collision>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/collision/link_6.STL"/>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <mesh filename="package://abb_irb1300_support/meshes/visual/link_6.STL"/>
+        </geometry>
+        <xacro:material_abb_dark_gray />
+      </visual>
+    </link>
+    <!-- end of link list -->
+
+    <!-- joint list -->
+    <joint type="revolute" name="${prefix}joint_1">
+      <origin xyz="-0.43218 -0.48436 0.20975" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <limit effort="0" lower="${radians(-180)}" upper="${radians(180)}" velocity="${radians(225)}"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_2">
+      <origin xyz="0.15 0 0.292" rpy="0 0.33992 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <limit effort="0" lower="${radians(-95)}" upper="${radians(155)}" velocity="${radians(180)}"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_3">
+      <origin xyz="0 0 0.575" rpy="0 -0.57698 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <limit effort="0" lower="${radians(-210)}" upper="${radians(69)}" velocity="${radians(140)}"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_4">
+      <origin xyz="0.090805 0 0.04" rpy="0.1453 0 0"/>
+      <axis xyz="1 0 0"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <limit effort="0" lower="${radians(-230)}" upper="${radians(230)}" velocity="${radians(500)}"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_5">
+      <origin xyz="0.5842 0 0" rpy="0 0.20514 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <limit effort="0" lower="${radians(-130)}" upper="${radians(130)}" velocity="${radians(415)}"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_6">
+      <origin xyz="0.077932 0 0" rpy="1.429 0 0"/>
+      <axis xyz="1 0 0"/>
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <limit effort="0" lower="${radians(-400)}" upper="${radians(400)}" velocity="${radians(720)}"/>
+    </joint>
+    <!-- end of joint list -->
+
+    <!-- ROS-Industrial 'base' frame: base_link to ABB World Coordinates transform -->
+    <link name="${prefix}base" />
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+
+    <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
+    <link name="${prefix}flange"/>
+    <joint type="fixed" name="${prefix}joint_6-flange">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}flange"/>
+    </joint>
+
+    <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
+    <link name="${prefix}tool0" />
+    <joint name="${prefix}flange-tool0" type="fixed">
+      <origin xyz="0 0 0" rpy="0 ${radians(90)} 0" />
+      <parent link="${prefix}flange" />
+      <child link="${prefix}tool0" />
+    </joint>
+
+
+    </xacro:macro>
+</robot>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="2">
+  <name>abb_irb1300_support</name>
+  <version>0.1.0</version>
+
+  <author>Ankit Aggarwal</author>
+  <maintainer email="ankitagg@andrew.cmu.edu">Ankit Aggarwal(CMU Robotics Institute)</maintainer>
+  <license>Apache-2.0</license>
+  <description>
+  Placeholder
+  </description>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <test_depend>roslaunch</test_depend>
+
+  <exec_depend>abb_resources</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <architecture_independent/>
+    <rosindex>
+      <tags>
+        <tag>support_package</tag>
+        <tag>description</tag>
+        <tag>abb</tag>
+        <tag>industrial</tag>
+        <tag>ros-industrial</tag>
+        <tag>irb1300</tag>
+        <tag>gofa</tag>
+        <tag>experimental</tag>
+      </tags>
+    </rosindex>
+    <ros_industrial>
+      <support_level value="community" />
+    </ros_industrial>
+  </export>
+</package>

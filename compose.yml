@@ -1,0 +1,17 @@
+
+services:
+  fanucros:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: abbros:noetic
+    container_name: abbros-container
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    environment:
+      - "ROS_MASTER_URI=http://localhost:11311"
+      - "DISPLAY"
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+      - "/dev/*:/dev/*"
