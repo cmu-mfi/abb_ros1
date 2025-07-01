@@ -130,7 +130,7 @@ WORKDIR /root/ros1_ws
 RUN bash -c "source /opt/ros/noetic/setup.bash"
 
 # Source workspace
-#RUN catkin config --init && catkin build
+RUN catkin build
 RUN echo "source /root/ros1_ws/devel/setup.bash" >> ~/.bashrc
 
 WORKDIR /root/
