@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_msgs
   actionlib
   actionlib_msgs
-  fc_msgs
+  ab_msgs
 )
 
 ###################################

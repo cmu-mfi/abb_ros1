@@ -82,6 +82,7 @@ RUN apt-get update && apt-get install -y \
     ros-noetic-trac-ik-kinematics-plugin \
     ros-noetic-joy \
     ros-noetic-joy-teleop \
+    ros-noetic-controller-manager \
     && rm -rf /var/lib/apt/lists/*
 RUN pip install ruckig
 #More 
